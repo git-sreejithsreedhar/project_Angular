@@ -1,0 +1,45 @@
+<div class="table-container">
+  <div class="table-header">
+      <div class="search-wrapper">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+      </div>
+      <div>
+      <button type="button" class="btn btn-danger" (click)="admLogout()">LogOut</button>
+      <!-- <a 
+  class="btn btn-danger" 
+  (click)="admLogout()"
+>
+  LogOut
+</a> -->
+
+
+      </div>
+  </div>
+  <table id="employee-table">
+      <thead>
+          <tr>
+              <th>Profile Image</th>
+              <th data-column="id" data-order="desc">ID <i class="fas fa-sort"></i></th>
+              <th data-column="fullName" data-order="desc">Username <i class="fas fa-sort"></i></th>
+              <th data-column="sex" data-order="desc">Email <i class="fas fa-sort"></i></th>
+              <th> Actions</th>
+          </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr *ngFor="let user of users">
+            <td>
+                <img [src]="user.profilePic ? 'http://localhost:3000/' + user.profilePic : 'http://localhost:3000/assets/default.png'" 
+                alt="{{user.username}}'s Profile Picture"
+                width="50" height="50">    
+            </td>
+            <td>{{ user.userId}}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="removeUser(user.userId)">Remove</button>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

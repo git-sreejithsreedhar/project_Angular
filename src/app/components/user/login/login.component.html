@@ -1,0 +1,26 @@
+
+<body>
+  <div class="wrapper">
+    <div class="box">
+      <!-- <span>{{ error$ | async }}</span> -->
+      <form [formGroup]="user_loginForm" (ngSubmit)="onSignin()"> 
+        <h1>Login</h1>
+
+        <div class="username">
+          <input type="text" formControlName="username" placeholder="Enter username" id="username" required>
+          <i class="fa-regular fa-envelope"></i>
+        </div>
+
+        <div class="password">
+          <input type="password" formControlName="password" placeholder="Enter password" id="password" autocomplete="off" required>
+          <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <button id="btn" type="submit">Login</button> 
+      </form>
+      <button id="btn" type="submit" (click)="newUser()">Registre</button> 
+    </div>
+  </div>
+</body>
+
+

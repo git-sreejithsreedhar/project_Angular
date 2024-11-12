@@ -1,0 +1,30 @@
+<body>
+<div class="container">
+    <div class="card register">
+      <h2>Register</h2>
+      <form #form="ngForm">
+        <input type="text" #username="ngModel" name="username" [(ngModel)]="userObj.username" placeholder="Username" required minlength="5">
+            <div class="text-danger">
+              <span *ngIf="username.touched && username.dirty && username.errors?.['required']">required</span>
+              <span *ngIf="username.touched && username.dirty && username.errors?.['minlength']">minimum 5 characters required</span>
+              <span class="text-success" *ngIf="username.valid && (username.touched || username.dirty)">valid</span>
+            </div>
+        <input type="email" #email="ngModel" name="email" [(ngModel)]="userObj.email" placeholder="Email" required email>
+            <div class="text-danger">
+              <span *ngIf="email.touched && email.errors?.['required']">required</span>
+              <span *ngIf="email.touched && email.errors?.['email']">valid email address required</span>
+              <span class="text-success" *ngIf="email.valid && email.touched">valid</span>
+            </div> 
+        <input type="password" #password="ngModel" name="password" [(ngModel)]="userObj.password" placeholder="Password" required minlength="5">
+            <div class="text-danger">
+              <span *ngIf="password.touched && password.dirty && password.errors?.['required']">required</span>
+              <span *ngIf="password.touched && password.dirty && password.errors?.['minlength']">minimum 5 characters required</span>
+              <span class="text-success" *ngIf="password.valid && (password.touched || username.dirty)">valid</span>
+            </div>
+        <button [disabled]="form.invalid" (click)="usrRegister()">Register</button>
+      </form>
+    </div>
+    
+  </div>
+</body>  
+
