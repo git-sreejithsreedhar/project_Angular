@@ -15,7 +15,7 @@ import { AdminLoginComponent } from '../admlogin/admlogin.component';
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [CommonModule, AdminLoginComponent, RouterLink, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './user-management.component.html',
   styleUrl: './user-management.component.css'
 })
@@ -51,17 +51,17 @@ users: any[] = [];
 
 
   removeUser(userId: string) {
-  
-    // this.users = this.users.filter(user => user.userId !== userId); 
+    console.log(userId)
+    this.users = this.users.filter(user => user.userId !== userId); 
 
-    // this.service.deleteUser(userId).subscribe({
-    //     next: (response) => {
-    //         console.log('User removed successfully:', response);
-    //     },
-    //     error: (error) => {
-    //         console.error('Error removing user:', error);
-    //     }
-    // });
+    this.service.removeUser(userId).subscribe({
+        next: (response) => {
+            console.log('User removed successfully:', response);
+        },
+        error: (error) => {
+            console.error('Error removing user:', error);
+        }
+    });
 }
 
 handleImageError(event: Event) {
